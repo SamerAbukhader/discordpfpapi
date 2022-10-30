@@ -7,7 +7,7 @@ and right now, its hosted on **HEROKU** on this [LINK](https://dashboard.heroku.
 The File `index.js` is fully open source so you can read as much as you want!
 
 # USAGE!
-You make an POST request to this URL posted above or here `https://discord-profile-picture-api.herokuapp.com/api/getpfp/?id=USER-ID&token=YOUR-BOT-TOKEN` , *__THIS IS ONLY AN API NOT A WEBSITE__*
+You make an POST request to this URL here `https://discord-profile-picture-api.herokuapp.com/api/getpfp/?id=USER-ID&token=YOUR-BOT-TOKEN` , *__THIS IS ONLY AN API NOT A WEBSITE__*
 Here is a jQuery Example using `$.POST`
 ```js
 async function getpfp(id, token){
