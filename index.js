@@ -7,8 +7,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 // You might want to store this in an environment variable or something
 
-
-const fetchUser = async (id,token) => {
+const fetchUser = async (id, token) => {
   const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
     headers: {
       Authorization: `Bot ${token}`
@@ -18,8 +17,8 @@ const fetchUser = async (id,token) => {
   return await response.json()
 }
 
-async function main(id){
-    let avatar = await fetchUser(id);
+async function main(id, token){
+    let avatar = await fetchUser(id, token);
     let link =  await `https://cdn.discordapp.com/avatars/${id}/${avatar["avatar"]}?size=512`
     return link
 }
@@ -32,7 +31,7 @@ app.post('/', async (req, res)=>{
     const discordid = req.body.id
     const token = req.body.token
     res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS")
-    res.send(await main(discordid,token))
+    res.send(await main(discordid, token))
 })
 
 //PORT
