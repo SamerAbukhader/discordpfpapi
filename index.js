@@ -24,15 +24,6 @@ async function main(id){
     return link
 }
 
-/*app.get('/', async (req, res)=>{
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS")
-    res.send(await main())
-})*/
 
 app.post('/', async (req, res)=>{
     res.setHeader("Access-Control-Allow-Origin", "*")
@@ -43,12 +34,6 @@ app.post('/', async (req, res)=>{
     res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS")
     res.send(await main(discordid))
 })
-
-app.get('/api/me', (req, res) => {
-    res.send([1,2,3]);
-})
-
-// 
 
 //PORT
 const port =  process.env.PORT || 3000
