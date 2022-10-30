@@ -1,11 +1,9 @@
 const express = require("express");
 const app = express();
 var cors = require('cors')
-app.use(cors()) // Use this after the variable declaration
+app.use(cors()) 
 app.use(express.json());
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-
-// You might want to store this in an environment variable or something
 
 const fetchUser = async (id, token) => {
   const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
