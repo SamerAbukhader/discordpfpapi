@@ -6,9 +6,9 @@ app.use(express.json());
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 // You might want to store this in an environment variable or something
-const token = 'MTAyNzIzMDI4MzIxMDE3MDQ5MA.GcrKiY.L_-5IJaCc7kHaY8HtetzKhisDlPC3JbspbnE_8'
 
-const fetchUser = async id => {
+
+const fetchUser = async (id,token) => {
   const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
     headers: {
       Authorization: `Bot ${token}`
@@ -30,8 +30,9 @@ app.post('/', async (req, res)=>{
     res.setHeader("Access-Control-Max-Age", "1800");
     res.setHeader("Access-Control-Allow-Headers", "content-type");
     const discordid = req.body.id
+    const token = req.body.token
     res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS")
-    res.send(await main(discordid))
+    res.send(await main(discordid,token))
 })
 
 //PORT
