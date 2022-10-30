@@ -24,7 +24,6 @@ async function main(id){
     return link
 }
 
-console.log("update!!!")
 app.post('/', async (req, res)=>{
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader("Access-Control-Allow-Credentials", "true");
