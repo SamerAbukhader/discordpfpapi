@@ -9,7 +9,6 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const fetchUser = async (id, token) => {
   const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
-
     headers: {
       Authorization: `Bot ${token}`
     }
@@ -24,17 +23,17 @@ async function main(id, token){
     return link
 }
 
-app.post('/api/getpfp', async (req, res)=>{
+app.post('/', async (req, res)=>{
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Max-Age", "1800");
     res.setHeader("Access-Control-Allow-Headers", "content-type");
-    const discordid = req.body.id
-    const token = req.body.token
+    const discordid = req.query["id"]
+    const token = req.query["token"]
     res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS")
     res.send(await main(discordid, token))
 })
 
 //PORT
-const port = process.env.PORT || 3000
+const port =  process.env.PORT || 3000
 app.listen(port, () => console.log(`Listening On Port ${port}...`))
